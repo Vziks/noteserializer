@@ -1,0 +1,12 @@
+services:
+    app.serialization.media_handler:
+        class: App\Serializer\MediaSerializationHandler
+        tags:
+            - { name: jms_serializer.subscribing_handler, type: App\Application\Sonata\MediaBundle\Entity\Media, direction: serialization, format: json, method: serializeMedia }
+        arguments: [ '@sonata.media.provider.image', '@sonata.media.provider.file' ]
+
+    jms_serializer.datetime_handler:
+        public: true
+        class: App\Serializer\DateTimeHandler
+        tags:
+            - { name: jms_serializer.subscribing_handler, type: DateTime, format: json }
