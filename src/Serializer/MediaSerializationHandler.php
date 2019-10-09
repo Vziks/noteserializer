@@ -63,10 +63,6 @@ class MediaSerializationHandler implements SubscribingHandlerInterface
                 throw new \RuntimeException("Serialization media provider not recognized");
         }
 
-        if ($visitor->getRoot() === null) {
-            $visitor->setRoot($serialization);
-        }
-
         return $serialization;
     }
 
